@@ -45,7 +45,6 @@ export const interviews = [
   { slug: 'joakim', name: 'Joakim', date: '2006-12-05', intro: 'Den danske funkstylern Joakim om den skandinaviska scenen, battles och gemenskap.', topics: ['Copenhagen', 'The Scandinavian approach', 'Memorable battles', 'Why crews matter'] },
   { slug: 'sean', name: 'Sean', date: '2005-04', intro: 'Bjørn “Sean” Hagen om popping, graffiti, musik och den norska streetdance-scenen.', topics: ['Norway and El Tempo', 'Mixing styles', 'Teaching', 'Building foundation'] },
   { slug: 'shallow', name: 'Shallow', date: '2006-04', intro: 'Shallow berättar om sin start 1978 och eventet Unity & Respect i Boston.', topics: ['Dancing since 1978', 'Hip-hop community', 'Unity & Respect', 'Music without boundaries'] },
-  { slug: 'supreme', name: 'Supreme', date: '2005-06', intro: 'Oskar “Supreme” Pitré om locking, svensk funk, battles och att fortsätta utvecklas.', topics: ['Finding locking', 'The Swedish funk scene', 'Battle memories', 'Keep developing'] },
 ]
 
 export const archiveLinks = [
