@@ -1,0 +1,25 @@
+
+.date {
+    position: relative;
+    z-index: 1001;
+    display: flex;
+
+   .days {          
+      padding: 0.25rem;
+      font-size: clamp(0.6rem, 1.4vw, 1rem);
+      color: white;
+      background-color: black;
+      text-shadow: 1px 1px black;
+      letter-spacing: 1px;
+
+      span {
+        align-self: flex-end;
+        height: fit-content;
+        padding: 0 1rem;
+        color: white;
+        background-color: rgb(150, 31, 31);
+         
+      }
+    }
+    
+  }

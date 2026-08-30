@@ -1,0 +1,86 @@
+$move-initial: calc(25%);
+$move-final: calc(-40%);
+
+.sideScroll {
+  width: 100%;
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  overflow: hidden;
+  z-index: 101;
+  transform: rotate(-45deg);
+  opacity: 0.3;
+  pointer-events: none;
+
+  @media (min-width: 768px) {
+   top: 20%;
+   left: 0%;
+  }
+
+
+  &.animate .sideScroll_inner {
+    animation-play-state: running;
+  }
+  .sideScroll_inner {
+    width: fit-content;
+    display: flex;
+    position: relative;
+    transform: translate3d($move-initial, 0, 0);
+    animation: sideScroll 5s linear infinite;
+    animation-play-state: paused;
+
+    @media (min-width: 980px) {
+      transform: translate3d(calc(-25% - 10vw), 0, 0);
+      animation: sideScroll-lg 10s linear infinite;
+      animation-play-state: paused;
+    }
+  }
+  .row_title {
+    padding: 0 8vw;
+    font-family: base02;
+    font-size: 20vh;
+    @media (min-width: 980px) {
+      padding: 0 2rem;
+    }
+  }
+
+  .row_letter {
+    font-family: base02;
+  }
+
+  @media (min-width: 768px) and 
+  (max-width: 1024px) and 
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-width: 769px) and 
+  (max-width: 1024px) and 
+  (min-resolution: 192dpi) {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+
+}
+}
+
+@keyframes sideScroll {
+  0% {
+    transform: translate3d($move-initial, 0, 0);
+  }
+
+  100% {
+    transform: translate3d($move-final, 0, 0);
+  }
+}
+
+@keyframes sideScroll-lg {
+  0% {
+    transform: translate3d(calc(-5% + 10vw), 0, 0) translateY(-5%);
+  }
+
+  50% {
+    transform: translate3d(calc(-25% + 10vw), 0, 0) translateY(10%);
+  }
+
+  100% {
+    transform: translate3d(calc(-50% + 10vw), 0, 0) translateY(0%);
+  }
+}
