@@ -41,7 +41,7 @@ export const videoClips = [
 ]
 
 export const pictureFiles = Array.from({ length: 53 }, (_, index) => index + 1)
-  .filter((number) => ![36, 40].includes(number))
+  .filter((number) => ![8, 36, 40].includes(number))
   .map((number) => `smallpic${String(number).padStart(3, '0')}.jpg`)
 
 export const clipTrackList = [
