@@ -10,4 +10,11 @@
 .guestbook-entry time { color: #7c2929; font: 400 .72rem/1.4 Courier, monospace; }
 .guestbook-entry p { margin: 0; color: #222; font: 400 .86rem/1.65 Courier, monospace; overflow-wrap: anywhere; }
 .guestbook-empty { color: #333; font-family: Courier, monospace; }
+.guestbook-edit-button,.guestbook-actions button { margin-top: .8rem; padding: .55rem .8rem; border: 0; background: #702020; color: #fff; font: 700 .72rem/1 Courier, monospace; text-transform: uppercase; cursor: pointer; }
+.guestbook-edit-form { display: grid; gap: .8rem; }
+.guestbook-edit-form label { display: grid; gap: .35rem; color: #171717; font: 700 .72rem/1.4 Courier, monospace; text-transform: uppercase; }
+.guestbook-edit-form input,.guestbook-edit-form textarea { width: 100%; padding: .7rem; border: 1px solid #aaa; background: #fff; color: #111; font: 400 .86rem/1.5 Courier, monospace; }
+.guestbook-actions { display: flex; gap: .6rem; }
+.guestbook-actions button { margin-top: 0; }
+.guestbook-actions button:last-child { background: #555; }
 @media (max-width: 720px) { .guestbook-layout { grid-template-columns: 1fr; } .guestbook-entry header { flex-direction: column; gap: .2rem; } }
