@@ -18,6 +18,7 @@ export default function ArchivePage({
   title, 
   eyebrow = 'Mass Destruction Archive', 
   background = 'media',
+  compactTitle = false,
   children 
 }) {
   return (
@@ -26,7 +27,7 @@ export default function ArchivePage({
         <source media="(max-width: 767px)" srcSet={mobileBackground.src} />
         <img src={(backgrounds[background] || mediaBackground).src} alt="" className="bg_main" />
       </picture>
-      <header className="archive-heading">
+      <header className={`archive-heading${compactTitle ? ' archive-heading--compact' : ''}`}>
         <p className="archive-eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
       </header>

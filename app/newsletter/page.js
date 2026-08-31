@@ -2,7 +2,7 @@ import ArchivePage from '../components/ArchivePage';
 
 export default function NewsletterPage() {
   return (
-    <ArchivePage title="STREET SCENE" eyebrow="Newsletter · Sverige" background="guestbook">
+    <ArchivePage title="STREET SCENE" eyebrow="Newsletter · Sverige" background="guestbook" compactTitle>
       <p className="archive-lead">En redaktionell yta för jams, battles, workshops och människorna i Sveriges streetdance-scen.</p>
       <div className="archive-grid">
         <article className="archive-card"><span>Kommande</span><h2>Events & battles</h2><p>Datum, plats, kategorier och länkar till anmälan.</p></article>

@@ -188,6 +188,10 @@
   }
 }
 
+.archive-heading--compact h1 {
+  font-size: clamp(2rem, 3.5vw, 3.75rem);
+}
+
 @media (min-width: 768px) {
   .bg_main { top: 5% !important; left: 10% !important; width: 80% !important; height: 90vh !important; }
 }
