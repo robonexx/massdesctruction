@@ -1,19 +1,10 @@
-import { MongoClient, ObjectId } from 'mongodb';
-
-const uri = process.env.MONGODB_URI;
-const client = uri ? new MongoClient(uri) : null;
-
-async function getDb() {
-  if (!client) return null;
-  if (!client.topology || !client.topology.isConnected()) {
-    await client.connect();
-  }
-  return client.db('massdestruction');
-}
+import { ObjectId } from 'mongodb';
+import { getDatabase } from '../../lib/mongodb';
+import { hasAdminSession } from '../../lib/admin-session';
 
 export async function GET() {
   try {
-    const db = await getDb();
+    const db = await getDatabase();
     if (!db) return Response.json([]);
 
     const items = await db.collection('news').find({}).sort({ _id: -1 }).toArray();
@@ -30,6 +21,7 @@ export async function GET() {
 
 export async function POST(request) {
   try {
+    if (!(await hasAdminSession())) return Response.json({ error: 'Unauthorized' }, { status: 401 });
     const body = await request.json();
     const { date, n } = body || {};
 
@@ -37,9 +29,9 @@ export async function POST(request) {
       return Response.json({ error: 'Date and text are required' }, { status: 400 });
     }
 
-    const db = await getDb();
+    const db = await getDatabase();
     if (!db) {
-      return Response.json({ date, n }, { status: 201 });
+      return Response.json({ error: 'MongoDB is not configured' }, { status: 503 });
     }
 
     const result = await db.collection('news').insertOne({ date, n });
@@ -52,12 +44,14 @@ export async function POST(request) {
 
 export async function DELETE(request) {
   try {
+    if (!(await hasAdminSession())) return Response.json({ error: 'Unauthorized' }, { status: 401 });
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     if (!id) return Response.json({ error: 'Missing id' }, { status: 400 });
 
-    const db = await getDb();
-    if (!db) return Response.json({ ok: true });
+    if (!ObjectId.isValid(id)) return Response.json({ error: 'Invalid id' }, { status: 400 });
+    const db = await getDatabase();
+    if (!db) return Response.json({ error: 'MongoDB is not configured' }, { status: 503 });
 
     await db.collection('news').deleteOne({ _id: new ObjectId(id) });
     return Response.json({ ok: true });

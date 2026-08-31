@@ -25,21 +25,11 @@ export default function MdLoginPage() {
 
       const result = await response.json();
       if (result.ok) {
-        localStorage.setItem('md-admin-auth', 'true');
         router.push('/md-admin');
         return;
       }
-    } catch (error) {
-      console.warn('Login failed, falling back to env check', error);
-    }
-
-    const expectedUser = process.env.NEXT_PUBLIC_MD_ADMIN_USER || 'robone';
-    const expectedPass = process.env.NEXT_PUBLIC_MD_ADMIN_PASS || '1234dans';
-
-    if (username === expectedUser && password === expectedPass) {
-      localStorage.setItem('md-admin-auth', 'true');
-      router.push('/md-admin');
-      return;
+    } catch {
+      // The server is the only authority for admin credentials.
     }
 
     setError('Fel användarnamn eller lösenord.');

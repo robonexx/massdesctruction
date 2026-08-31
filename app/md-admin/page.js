@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const ADMIN_KEY = 'md-admin-auth';
-
 const normalizeNews = (value) => {
   if (!Array.isArray(value)) return [];
   return value;
@@ -30,13 +28,14 @@ export default function MdAdminPage() {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
-    if (localStorage.getItem(ADMIN_KEY) !== 'true') {
-      router.replace('/md-login');
-      return;
-    }
-
     const loadData = async () => {
       try {
+        const sessionResponse = await fetch('/api/admin/session');
+        if (!sessionResponse.ok) {
+          router.replace('/md-login');
+          return;
+        }
+
         const [newsResponse, guestbookResponse] = await Promise.all([
           fetch('/api/news'),
           fetch('/api/guestbook'),
@@ -117,8 +116,8 @@ export default function MdAdminPage() {
     setGuestbook((current) => current.filter((entry) => entry.id !== id));
   };
 
-  const logout = () => {
-    localStorage.removeItem(ADMIN_KEY);
+  const logout = async () => {
+    await fetch('/api/admin/logout', { method: 'POST' });
     router.push('/md-login');
   };
 
