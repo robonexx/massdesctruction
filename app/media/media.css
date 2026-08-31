@@ -1,0 +1,139 @@
+.media-tabs {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.media-tabs button {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #171717;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.media-tabs button:hover {
+  color: #a52929;
+}
+
+.media-tabs button.active {
+  border-bottom-color: #a52929;
+  color: #a52929;
+}
+
+.track-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.track-list article {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.track-list article div {
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-list strong {
+  color: #171717;
+  font-size: 1rem;
+}
+
+.track-list small {
+  color: #a52929;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.track-list audio {
+  width: 100%;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.video-grid article {
+  background: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.video-grid video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video-info {
+  padding: 1rem;
+}
+
+.video-info h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #171717;
+}
+
+.video-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-family: Courier, monospace;
+}
+
+.video-info a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #a52929;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: 0.2s ease;
+}
+
+.video-info a:hover {
+  background: #7a1e1e;
+}
+
+.picture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.picture-grid a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  transition: 0.2s ease;
+}
+
+.picture-grid a:hover {
+  border-color: #a52929;
+  transform: scale(1.02);
+}
+
+.picture-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}

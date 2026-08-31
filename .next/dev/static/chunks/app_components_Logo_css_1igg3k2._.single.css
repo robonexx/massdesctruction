@@ -1,0 +1,35 @@
+/* [project]/app/components/Logo.css [app-client] (css) */
+.logo {
+  z-index: 101;
+  position: relative;
+  top: 0%;
+  left: 5%;
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    top: 6%;
+    left: 10%;
+  }
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo h1 {
+  text-align: left;
+  text-shadow: 3px 0 7px #1b1b1acc, -3px 0 7px #050505cc, 0 4px 7px #000c;
+  color: #fff;
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 5rem);
+  line-height: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .logo h1:first-of-type {
+    margin-top: 2rem;
+  }
+}
+
+/*# sourceMappingURL=app_components_Logo_css_1igg3k2._.single.css.map*/

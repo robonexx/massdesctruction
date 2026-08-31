@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/components/Logo.css"],"sourcesContent":[".logo {\r\n  position: relative;\r\n  z-index: 101;\r\n  left: 5%;\r\n  top: 0%;\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n  .logo {\r\n    left: 10%;\r\n    top: 6%;\r\n  }\r\n}\r\n\r\n.logo a {\r\n  text-decoration: none;\r\n}\r\n\r\n.logo h1 {\r\n  text-align: left;\r\n  font-size: clamp(1.4rem, 3vw, 5rem);\r\n  line-height: 1;\r\n  text-shadow: 3px 0px 7px rgba(27, 27, 26, 0.8), -3px 0px 7px rgba(5, 5, 5, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);\r\n  margin: 0;\r\n  color: white;\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n  .logo h1:first-of-type {\r\n    margin-top: 2rem;\r\n  }\r\n}\r\n"],"names":[],"mappings":"AAAA;;;;;;;AAOA;EACE;;;;;;AAMF;;;;AAIA;;;;;;;;;AASA;EACE"}}]
+}

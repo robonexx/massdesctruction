@@ -4,8 +4,13 @@
   "/api/admin/login/route": "/api/admin/login",
   "/api/guestbook/route": "/api/guestbook",
   "/api/news/route": "/api/news",
+  "/articles/[slug]/page": "/articles/[slug]",
+  "/articles/page": "/articles",
   "/guestbook/page": "/guestbook",
+  "/links/page": "/links",
   "/md-admin/page": "/md-admin",
   "/md-login/page": "/md-login",
+  "/media/page": "/media",
+  "/members/page": "/members",
   "/page": "/"
 }

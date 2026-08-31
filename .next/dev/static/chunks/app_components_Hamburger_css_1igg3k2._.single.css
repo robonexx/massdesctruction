@@ -1,0 +1,28 @@
+/* [project]/app/components/Hamburger.css [app-client] (css) */
+.hamburger {
+  z-index: 1001;
+  cursor: pointer;
+  visibility: visible;
+  transition: all .4s;
+  position: absolute;
+  top: 10vh;
+  right: 2vw;
+}
+
+@media screen and (min-width: 980px) {
+  .hamburger {
+    visibility: hidden;
+  }
+}
+
+.hamburger h2 {
+  color: #000;
+  background-color: #e81010;
+  margin: 0;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all .4s;
+}
+
+/*# sourceMappingURL=app_components_Hamburger_css_1igg3k2._.single.css.map*/

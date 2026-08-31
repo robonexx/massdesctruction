@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/components/Hamburger.css"],"sourcesContent":[".hamburger {\r\n  position: absolute;\r\n  top: 10vh;\r\n  right: 2vw;\r\n  z-index: 1001;\r\n  cursor: pointer;\r\n  visibility: visible;\r\n  transition: all 0.4s ease;\r\n}\r\n\r\n@media screen and (min-width: 980px) {\r\n  .hamburger {\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n.hamburger h2 {\r\n  transition: all 0.4s ease;\r\n  padding: 0.5rem 1rem;\r\n  background-color: rgb(232, 16, 16);\r\n  color: black;\r\n  margin: 0;\r\n  font-weight: bold;\r\n  font-size: 1rem;\r\n}\r\n"],"names":[],"mappings":"AAAA;;;;;;;;;;AAUA;EACE;;;;;AAKF"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/components/Header.css"],"sourcesContent":["header.header {\r\n  width: 90%;\r\n  height: 10vh;\r\n  position: absolute;\r\n  top: 0%;\r\n  left: 5%;\r\n  z-index: 101;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  background-color: transparent;\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n  header.header {\r\n    width: 80%;\r\n    height: 10vh;\r\n    top: 5%;\r\n    left: 10%;\r\n  }\r\n}\r\n\r\nheader.header .header_text {\r\n  max-width: 45%;\r\n  align-self: flex-end;\r\n  font-size: clamp(0.5rem, 1.2vw, 1rem);\r\n  letter-spacing: 1px;\r\n  color: white;\r\n  background-color: rgb(150, 31, 31);\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n}\r\n"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;AAaA;EACE;;;;;;;;AAQF"}}]
+}

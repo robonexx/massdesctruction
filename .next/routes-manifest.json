@@ -21,7 +21,16 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/articles/[slug]",
+      "regex": "^/articles/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/articles/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
   "staticRoutes": [
     {
       "page": "/",
@@ -60,10 +69,22 @@
       "namedRegex": "^/api/news(?:/)?$"
     },
     {
+      "page": "/articles",
+      "regex": "^/articles(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/articles(?:/)?$"
+    },
+    {
       "page": "/guestbook",
       "regex": "^/guestbook(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/guestbook(?:/)?$"
+    },
+    {
+      "page": "/links",
+      "regex": "^/links(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/links(?:/)?$"
     },
     {
       "page": "/md-admin",
@@ -76,6 +97,18 @@
       "regex": "^/md\\-login(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/md\\-login(?:/)?$"
+    },
+    {
+      "page": "/media",
+      "regex": "^/media(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/media(?:/)?$"
+    },
+    {
+      "page": "/members",
+      "regex": "^/members(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/members(?:/)?$"
     }
   ],
   "dataRoutes": [],
