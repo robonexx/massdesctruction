@@ -9,8 +9,9 @@ function elapsedSinceSven() {
 }
 
 export default function AmbientFrame() {
-  const [elapsed, setElapsed] = useState(elapsedSinceSven);
+  const [elapsed, setElapsed] = useState(null);
   useEffect(() => {
+    setElapsed(elapsedSinceSven());
     const timer = window.setInterval(() => setElapsed(elapsedSinceSven()), 1000);
     return () => window.clearInterval(timer);
   }, []);
@@ -22,7 +23,7 @@ export default function AmbientFrame() {
       </div>
       <footer>
         <div className="date">
-          <h4 className="days">{elapsed.years} years {elapsed.months} months {elapsed.days} days <span className="time">{elapsed.hours} hours {elapsed.minutes} minutes {elapsed.seconds} seconds</span></h4>
+          <h4 className="days">{elapsed ? `${elapsed.years} years ${elapsed.months} months ${elapsed.days} days` : 'Remembering Sven Forshell'} <span className="time">{elapsed ? `${elapsed.hours} hours ${elapsed.minutes} minutes ${elapsed.seconds} seconds` : 'Slam-Tilt'}</span></h4>
         </div>
         <h4 className="slam_tilt">since we lost our dear brother / member <span>Slam-Tilt</span></h4>
       </footer>
