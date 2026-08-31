@@ -29,7 +29,7 @@ function App() {
       <Header />
       <Hamburger active={active} setActive={setActive}/>
       <Nav />
-      <NavMobile active={active} />
+      <NavMobile active={active} onNavigate={() => setActive(false)} />
       <BannerSideScroll />
       <div className='bg_white'></div>      
       

@@ -32,10 +32,14 @@ const navItems = [
     },
 ];
 
-const NavMobile = ({active}) => {
+const NavMobile = ({ active, onNavigate }) => {
   return (
-      <nav className={`nav_mobile ${active ? 'open' :  ''}`}>
-          <Logo />
+      <nav
+        className={`nav_mobile ${active ? 'open' : ''}`}
+        aria-label="Mobile navigation"
+        aria-hidden={!active}
+      >
+          <Logo onClick={onNavigate} />
            <ul className='menu'>
         {
           navItems.map(({ title, path }, i) => (
@@ -45,7 +49,9 @@ const NavMobile = ({active}) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: i * 0.3 }}
             >
-              <Link className='nav_link' to={path}>{title}</Link>
+              <Link className='nav_link' to={path} onClick={onNavigate}>
+                {title}
+              </Link>
             </motion.li>            
           ))
         }              

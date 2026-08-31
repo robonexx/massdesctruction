@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 // styles 
 import './logo.scss'
 
-const Logo = () => {
+const Logo = ({ onClick }) => {
   return (
     <div className='logo'>
-      <Link to='/'>
+      <Link to='/' onClick={onClick}>
           <motion.h1
               initial={{y: -300, opacity: 0}}
               animate={{y: 0, opacity: 1}}

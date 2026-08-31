@@ -8,7 +8,7 @@
     opacity: 0;
     transform: translateX(-120%);
     background-color: black;
-    opacity: 0;
+    pointer-events: none;
 
     transition: all 0.4s ease-in-out;
 
@@ -20,6 +20,7 @@
         transition: all 0.4s ease-in-out;
         opacity: 1;
         transform: translateX(0%);
+        pointer-events: auto;
     }
     
     .menu {
@@ -39,6 +40,7 @@
             text-align: left;
 
             .nav_link {
+                display: block;
                 padding: 0.25rem 1rem;
                 height: 100%;
                 width: 100%;
@@ -74,4 +76,3 @@
     }
   }
   
-
