@@ -1,28 +1,13 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { displayName, musicTracks, pictureFiles, videoClips } from '../lib/archive';
 import './media.css';
 
 const sections = ['music', 'video', 'pictures'];
 
-function MediaArchive() {
-  const searchParams = useSearchParams();
-  const requestedSection = searchParams.get('section');
-  const initialSection = sections.includes(requestedSection) ? requestedSection : 'music';
-  const [section, setSection] = useState(initialSection);
-
-  useEffect(() => {
-    setSection(initialSection);
-  }, [initialSection]);
-
-  useEffect(() => {
-    if (section !== 'video' || !window.location.hash) return;
-
-    const target = document.getElementById(window.location.hash.slice(1));
-    if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-  }, [section]);
+export default function MediaPage() {
+  const [section, setSection] = useState('music');
 
   return (
     <>
@@ -90,24 +75,5 @@ function MediaArchive() {
         </section>
       </main>
     </>
-  );
-}
-
-function MediaFallback() {
-  return (
-    <main className="media-page">
-      <section className="media-content">
-        <h1>MEDIA FILES</h1>
-        <p className="media-eyebrow">Loading archive…</p>
-      </section>
-    </main>
-  );
-}
-
-export default function MediaPage() {
-  return (
-    <Suspense fallback={<MediaFallback />}>
-      <MediaArchive />
-    </Suspense>
   );
 }

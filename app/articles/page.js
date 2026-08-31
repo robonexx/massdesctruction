@@ -13,25 +13,16 @@ export default function ArticlesPage() {
     >
       <p className="archive-lead">Röster ur funk- och streetdance-scenen, bevarade från originalwebbplatsen.</p>
       <div className="archive-grid interview-grid">
-        <Link
-          href="/media?section=video#md-greg"
-          className="archive-card archive-card--video"
-        >
-          <span>Video interview</span>
-          <h2>Greg Campbellock Jr. Pope</h2>
-          <p>Interview with the legendary Greg Campbellock Jr. Pope, an honor to have had this interview.</p>
-          <strong>Watch interview →</strong>
-        </Link>
         {interviews.map((article) => (
           <Link
             href={`/articles/${article.slug}`}
             key={article.slug}
-            className="archive-card"
+            className={`archive-card${article.type === 'video' ? ' archive-card--video' : ''}`}
           >
             <span>{article.date}</span>
             <h2>{article.name}</h2>
             <p>{article.intro}</p>
-            <strong>Läs intervjun →</strong>
+            <strong>{article.type === 'video' ? 'Watch interview →' : 'Läs intervjun →'}</strong>
           </Link>
         ))}
       </div>

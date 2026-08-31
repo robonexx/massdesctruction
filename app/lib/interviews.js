@@ -1,5 +1,13 @@
 export const interviews = [
   {
+    slug: 'greg-campbellock-jr',
+    name: 'Greg Campbellock Jr. Pope',
+    date: 'Video interview',
+    type: 'video',
+    intro: 'Interview with the legendary Greg Campbellock Jr. Pope, an honor to have had this interview.',
+    videoFile: 'md-greg.mp4',
+  },
+  {
     slug: 'joakim',
     name: 'Joakim',
     date: '2006-12-05',

@@ -9,7 +9,6 @@
 .track-list audio { width: 100%; height: 34px; }
 .video-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 1rem; }
 .video-grid article { overflow: hidden; border-top: 5px solid #171717; background: rgba(237,237,237,.34); }
-.video-grid article:target { border-top-color: #a52929; scroll-margin-top: 1rem; }
 .video-grid video { display: block; width: 100%; aspect-ratio: 4/3; background: #111; }
 .video-info { padding: .8rem; }
 .video-info h2 { margin: 0 0 .25rem; color: #171717; font-size: 1.4rem; }
