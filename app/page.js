@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import desktopBackground from '../src/assets/images/bg_main.png';
-import mobileBackground from '../src/assets/images/bg_mobile.png';
 import './home.css';
+
+const desktopBackground = '/assets/images/bg_main.png';
+const mobileBackground = '/assets/images/bg_mobile.png';
 
 const defaultNewsItems = [
   { date: '2007-11-16', n: 'Got a new clip, this one of Razzle Dazzle playing with Primes latest track. Check it all out in the media section.' },
@@ -20,21 +21,35 @@ const defaultNewsItems = [
   { date: '2004-05-11', n: 'Site released.' },
 ];
 
+function mergeNewsItems(publishedItems) {
+  const seen = new Set();
+
+  return [...publishedItems, ...defaultNewsItems].filter((item) => {
+    if (!item?.date || !item?.n) return false;
+    const key = `${item.date}\u0000${item.n.trim()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 export default function HomePage() {
   const [newsItems, setNewsItems] = useState(defaultNewsItems);
 
   useEffect(() => {
     fetch('/api/news')
       .then((response) => response.ok ? response.json() : [])
-      .then((data) => { if (Array.isArray(data) && data.length) setNewsItems(data); })
+      .then((data) => {
+        if (Array.isArray(data)) setNewsItems(mergeNewsItems(data));
+      })
       .catch(() => {});
   }, []);
 
   return (
     <>
       <picture>
-        <source media="(max-width: 767px)" srcSet={mobileBackground.src} />
-        <img className="bg_main" src={desktopBackground.src} alt="" />
+        <source media="(max-width: 767px)" srcSet={mobileBackground} />
+        <img className="bg_main" src={desktopBackground} alt="" />
       </picture>
       <main className="content_wrapper welcome-page">
         <section className="welcome-left">

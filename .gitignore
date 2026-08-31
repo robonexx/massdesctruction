@@ -25,3 +25,6 @@ dist-ssr
 *.sw?
 .env*
 !.env.example
+
+# Legacy Vite/Express application (kept locally for reference)
+/old_site/

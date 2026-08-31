@@ -55,7 +55,7 @@ I hope this project is accepted as last minute change of heart.
 ✅ **News management** - Post updates to homepage  
 ✅ **Guestbook moderation** - Manage visitor entries  
 ✅ **Vercel-ready** - Deploy instantly with env variables  
-✅ **MongoDB optional** - Persistent storage or localStorage fallback  
+✅ **MongoDB Atlas** - Persistent news and guestbook storage
 
 ## Quick Start
 
@@ -66,7 +66,7 @@ npm run dev
 
 Visit [http://localhost:3000](http://localhost:3000)
 
-**Admin login**: `/md-login` → Username: `robone` / Password: `1234dans`
+**Admin login**: `/md-login` using the server-side `MD_ADMIN_USER` and `MD_ADMIN_PASS` values
 
 ## Deployment
 

@@ -1,17 +1,14 @@
 import './ArchivePage.css';
-import mediaBackground from '../../src/assets/images/bg_media.png';
-import membersBackground from '../../src/assets/images/bg_members.png';
-import membersDetailBackground from '../../src/assets/images/bg_members2.png';
-import guestbookBackground from '../../src/assets/images/bg_guestbook.png';
-import linksBackground from '../../src/assets/images/bg_links.png';
-import mobileBackground from '../../src/assets/images/bg_mobile.png';
+
+const mediaBackground = '/assets/images/bg_media.png';
+const mobileBackground = '/assets/images/bg_mobile.png';
 
 const backgrounds = {
   media: mediaBackground,
-  members: membersBackground,
-  member: membersDetailBackground,
-  guestbook: guestbookBackground,
-  links: linksBackground,
+  members: '/assets/images/bg_members.png',
+  member: '/assets/images/bg_members2.png',
+  guestbook: '/assets/images/bg_guestbook.png',
+  links: '/assets/images/bg_links.png',
 };
 
 export default function ArchivePage({ 
@@ -24,8 +21,8 @@ export default function ArchivePage({
   return (
     <>
       <picture>
-        <source media="(max-width: 767px)" srcSet={mobileBackground.src} />
-        <img src={(backgrounds[background] || mediaBackground).src} alt="" className="bg_main" />
+        <source media="(max-width: 767px)" srcSet={mobileBackground} />
+        <img src={backgrounds[background] || mediaBackground} alt="" className="bg_main" />
       </picture>
       <header className={`archive-heading${compactTitle ? ' archive-heading--compact' : ''}`}>
         <p className="archive-eyebrow">{eyebrow}</p>

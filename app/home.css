@@ -5,7 +5,7 @@
 .welcome-copy .text { padding: 2rem 1rem; text-align: left; }
 .welcome-copy h4 { margin-bottom: 2rem; color: #595959; font: 700 1rem/1.2 Courier,monospace; }
 .brodtext { color: #000; font: 400 12px/normal Courier,"Courier New",monospace; }
-.welcome-news { position: relative; height: 100%; padding: 6rem 4rem 5rem; overflow-y: auto; cursor: default; }
+.welcome-news { position: relative; height: 100%; padding: 6rem 4rem 5rem; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; cursor: default; }
 .welcome-news > h2 { top: 2vh; color: rgb(150,31,31); }
 .welcome-news .news_item { min-width: 220px; padding: 2rem 1rem; text-align: left; border-bottom: 2px solid #b33030; }
 .welcome-news .news_date { padding: 1rem 2rem; color: #000; font-size: .6rem; text-align: left; }

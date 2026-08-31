@@ -45,20 +45,19 @@ npm run dev
 ### Admin Access (Local)
 
 - Navigate to `/md-login`
-- Username: `robone`
-- Password: `1234dans`
+- Use the values configured in `MD_ADMIN_USER` and `MD_ADMIN_PASS`
 - After login, access `/md-admin` to manage news and guestbook
 
 ## Environment Variables
 
 ### Required for Local Development
-- `NEXT_PUBLIC_MD_ADMIN_USER` - Admin username (visible in browser)
-- `NEXT_PUBLIC_MD_ADMIN_PASS` - Admin password (visible in browser)
 - `MD_ADMIN_USER` - Admin username (server-side)
 - `MD_ADMIN_PASS` - Admin password (server-side)
+- `MD_ADMIN_SESSION_SECRET` - A separate, long random secret used to sign admin sessions
+- `MONGODB_URI` - MongoDB Atlas connection string (server-side)
 
-### Optional for MongoDB (Vercel only)
-- `MONGODB_URI` - MongoDB Atlas connection string (keep secret in Vercel)
+### Optional
+- `MONGODB_DB` - Database name; defaults to `massdestruction`
 
 ## Deployment to Vercel
 
@@ -71,9 +70,9 @@ npm run dev
 5. Add environment variables in the Vercel dashboard:
    - `MD_ADMIN_USER`
    - `MD_ADMIN_PASS`
-   - `NEXT_PUBLIC_MD_ADMIN_USER` (this will be visible)
-   - `NEXT_PUBLIC_MD_ADMIN_PASS` (this will be visible)
-   - `MONGODB_URI` (optional, for persistent storage)
+   - `MD_ADMIN_SESSION_SECRET`
+   - `MONGODB_URI`
+   - `MONGODB_DB` (optional; defaults to `massdestruction`)
 
 6. Deploy!
 
@@ -85,7 +84,7 @@ If you want persistent storage instead of localStorage:
 2. Create a cluster and database named `massdestruction`
 3. Create a database user and get the connection string
 4. In Vercel dashboard, add `MONGODB_URI` with your connection string
-5. Add your Vercel IP to MongoDB Atlas IP whitelist (Vercel will prompt you)
+5. Configure MongoDB Atlas Network Access so the Vercel deployment can reach the cluster
 
 ## API Routes
 
