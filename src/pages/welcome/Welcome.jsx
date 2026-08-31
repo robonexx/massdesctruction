@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useIsDesktop } from '../../hooks/useMediaQuery'
 import BG from '../../assets/images/bg_main.png'
@@ -5,7 +6,7 @@ import BGMobile from '../../assets/images/bg_mobile.png'
 // styles
 import './Welcome.scss'
 
-const newsItems = [
+const defaultNewsItems = [
   {
     date: '2007-11-16',
     n: 'Got a new clip, this one of Razzle Dazzle playing with Primes latest track. Check it all out in the media section.',
@@ -51,8 +52,28 @@ const newsItems = [
     n: 'Site Released',
   },
 ]
+
+const NEWS_STORAGE_KEY = 'massdestruction_news'
+
+const readStoredNews = () => {
+  try {
+    const raw = localStorage.getItem(NEWS_STORAGE_KEY)
+    if (!raw) return defaultNewsItems
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : defaultNewsItems
+  } catch (error) {
+    return defaultNewsItems
+  }
+}
+
 const Welcome = () => {
   const desktop = useIsDesktop()
+  const [newsItems, setNewsItems] = useState(readStoredNews)
+
+  useEffect(() => {
+    localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(newsItems))
+  }, [newsItems])
+
   return (
     <>
     <img src={desktop ? BG : BGMobile} alt="" className='bg_main' />
@@ -86,8 +107,8 @@ So, surviving several nuclear winters the dance still lives and breathes in the 
          animate={{ opacity: 1, x: 0 }}
          transition={{ duration: 0.6, delay: 1.4 }}
             >NEWS</motion.h2>
-             {newsItems.map(({date, n}) => (
-              <div className="news_item" key={date}>
+             {newsItems.map(({date, n}, index) => (
+              <div className="news_item" key={`${date}-${index}`}>
               <p className='news_date'>{date}</p>
               <p className='brodtext'>
                 {n}

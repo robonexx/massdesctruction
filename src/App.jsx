@@ -9,6 +9,7 @@ import Nav from './components/nav/Nav';
 import BannerSideScroll from './components/bannersidescroll/BannerSideScroll';
 import Welcome from './pages/welcome/Welcome';
 import MemberDetails from './pages/members/MemberDetails';
+import { MdAdmin, MdLogin } from './pages/admin/AdminPanel';
 
 // styles
 import './App.scss'
@@ -23,15 +24,16 @@ function App() {
   const [menuPath, setMenuPath] = useState(null);
   const active = menuPath === pathname;
   const setActive = (nextActive) => setMenuPath(nextActive ? pathname : null);
+  const isAdminRoute = pathname.startsWith('/md-');
 
   return (
     <div className="App">
-      <Header />
-      <Hamburger active={active} setActive={setActive}/>
-      <Nav />
-      <NavMobile active={active} onNavigate={() => setActive(false)} />
-      <BannerSideScroll />
-      <div className='bg_white'></div>      
+      {!isAdminRoute && <Header />}
+      {!isAdminRoute && <Hamburger active={active} setActive={setActive}/>}
+      {!isAdminRoute && <Nav />}
+      {!isAdminRoute && <NavMobile active={active} onNavigate={() => setActive(false)} />}
+      {!isAdminRoute && <BannerSideScroll />}
+      {!isAdminRoute && <div className='bg_white'></div>}
       
       <Routes>
       <Route path="/" element={<Welcome />} />
@@ -43,8 +45,10 @@ function App() {
       <Route path="/newsletter" element={<Newsletter />} />
       <Route path="/guestbook" element={<Guestbook />} />
       <Route path="/links" element={<LinksPage />} />
+      <Route path="/md-login" element={<MdLogin />} />
+      <Route path="/md-admin" element={<MdAdmin />} />
       </Routes> 
-      <Footer />
+      {!isAdminRoute && <Footer />}
     </div>
   )
 }

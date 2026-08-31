@@ -52,9 +52,9 @@ const NavMobile = ({ active, onNavigate }) => {
               <Link className='nav_link' to={path} onClick={onNavigate}>
                 {title}
               </Link>
-            </motion.li>            
+            </motion.li>
           ))
-        }              
+        }
           </ul>
     </nav>
   )

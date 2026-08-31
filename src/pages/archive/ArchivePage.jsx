@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useIsDesktop } from '../../hooks/useMediaQuery'
 import BGMedia from '../../assets/images/bg_media.png'
@@ -49,23 +49,52 @@ export const LinksPage = () => (
   <Page title="LINKS" background={BGLinks}><p className="archive-lead">Originalets länksamling. Vissa äldre webbplatser kan ha flyttat eller försvunnit.</p><div className="link-list">{archiveLinks.map(([name, url]) => <a href={url} target="_blank" rel="noreferrer" key={name}><span>{name}</span><small>{url}</small></a>)}</div></Page>
 )
 
+const GUESTBOOK_STORAGE_KEY = 'massdestruction_guestbook'
+
+const readGuestbookEntries = () => {
+  try {
+    const raw = localStorage.getItem(GUESTBOOK_STORAGE_KEY)
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch (error) {
+    return []
+  }
+}
+
 export const Guestbook = () => {
-  const [entries, setEntries] = useState([])
+  const [entries, setEntries] = useState(readGuestbookEntries)
   const [notice, setNotice] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem(GUESTBOOK_STORAGE_KEY, JSON.stringify(entries))
+  }, [entries])
+
   const submit = (event) => {
     event.preventDefault()
     const form = new FormData(event.currentTarget)
-    const name = form.get('name').trim()
-    const message = form.get('message').trim()
+    const name = String(form.get('name') || '').trim()
+    const message = String(form.get('message') || '').trim()
     if (!name || !message) return
-    setEntries((current) => [{ name, message, date: new Date().toLocaleDateString('sv-SE') }, ...current])
-    setNotice('Inlägget syns i denna session. Databaskoppling återstår innan det kan sparas permanent.')
+
+    const now = new Date()
+    const createdEntry = {
+      id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      name,
+      message,
+      date: now.toLocaleDateString('sv-SE'),
+      time: now.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' }),
+    }
+
+    setEntries((current) => [createdEntry, ...current])
+    setNotice('Tack! Ditt meddelande är sparat i gästboken.')
     event.currentTarget.reset()
   }
+
   return (
-    <Page title="GUESTBOOK" background={BGGuestbook}><p className="archive-lead">Lämna ett spår i arkivet. Förhandsversionen sparar ännu inte inlägg permanent.</p>
+    <Page title="GUESTBOOK" background={BGGuestbook}><p className="archive-lead">Lämna ett spår i arkivet. Inlägg sparas i din webbläsare och kan administreras från admin-läget.</p>
       <form className="guestbook-form" onSubmit={submit}><label>Namn<input name="name" maxLength="60" required /></label><label>Meddelande<textarea name="message" maxLength="800" rows="5" required /></label><button type="submit">Skriv i gästboken</button>{notice && <p className="form-notice" role="status">{notice}</p>}</form>
-      <div className="guestbook-entries">{entries.length === 0 ? <p className="archive-note">Inga nya inlägg i den här sessionen ännu.</p> : entries.map((entry, index) => <article key={`${entry.date}-${index}`}><header><strong>{entry.name}</strong><time>{entry.date}</time></header><p>{entry.message}</p></article>)}</div>
+      <div className="guestbook-entries">{entries.length === 0 ? <p className="archive-note">Inga nya inlägg i den här sessionen ännu.</p> : entries.map((entry) => <article key={entry.id}><header><strong>{entry.name}</strong><time>{entry.date} · {entry.time}</time></header><p>{entry.message}</p></article>)}</div>
     </Page>
   )
 }

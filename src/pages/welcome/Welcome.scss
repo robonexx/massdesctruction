@@ -82,15 +82,17 @@
   
   
   .news {    
-    padding: 6rem 4rem 2rem;
+    padding: 6rem 4rem 5rem;
     height: 100%;
     position: relative;
     overflow-y: scroll;
     cursor: pointer;
+    padding-bottom: 5rem;
 
     @media screen and (min-width: 768px) {
-      padding: 6rem 1rem 2rem;
+      padding: 6rem 1rem 6rem;
       position: absolute;
+      padding-bottom: 6rem;
     }
   
     &:first-child {
