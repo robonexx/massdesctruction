@@ -15,7 +15,7 @@ export default function ArticleDetailPage() {
     return (
       <ArchivePage 
         title="Intervjun hittades inte"
-        background="/archive/bg_media.png"
+        background="media"
       >
         <Link href="/articles" className="back-link">Till alla intervjuer</Link>
       </ArchivePage>
@@ -26,7 +26,7 @@ export default function ArticleDetailPage() {
     <ArchivePage 
       title={article.name}
       eyebrow={`Interview · ${article.date}`}
-      background="/archive/bg_media.png"
+      background="media"
     >
       <p className="archive-lead">{article.intro}</p>
       <section className="article-body">

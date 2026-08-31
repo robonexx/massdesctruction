@@ -4,7 +4,6 @@ import { useState } from 'react';
 import ArchivePage from '../components/ArchivePage';
 import { displayName, musicTracks, pictureFiles, videoClips } from '../lib/archive';
 import './media.css';
-import './media.css';
 
 export default function MediaPage() {
   const [section, setSection] = useState('music');
@@ -13,7 +12,7 @@ export default function MediaPage() {
     <ArchivePage 
       title="MEDIA FILES" 
       eyebrow="Original archive · 2004–2007"
-      background="/archive/bg_media.png"
+      background="media"
     >
       <div className="media-tabs" role="tablist" aria-label="Media categories">
         {['music', 'video', 'pictures'].map((tab) => (

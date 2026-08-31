@@ -54,6 +54,15 @@
   font-family: Courier, monospace;
 }
 
+.member-detail { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; gap: 2rem; align-items: start; }
+.member-detail img { width: 100%; height: auto; transform: rotate(-2deg); box-shadow: 10px 12px 0 rgba(165, 41, 41, 0.18); }
+.member-detail p { margin: 0; font: 700 1rem/1.75 Courier, monospace; }
+
+@media (max-width: 600px) {
+  .member-detail { grid-template-columns: 1fr; }
+  .member-detail img { max-width: 220px; }
+}
+
 .error-message {
   background: #ffe6e6;
   border: 1px solid #a52929;

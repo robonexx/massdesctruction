@@ -16,9 +16,12 @@
   text-decoration: none;
 }
 
-.logo h1 {
+.logo span {
+  display: block;
+  font-family: var(--display-font);
+  font-weight: 700;
   text-align: left;
-  font-size: clamp(1.4rem, 3vw, 5rem);
+  font-size: clamp(1.45rem, 3vw, 3.7rem);
   line-height: 1;
   text-shadow: 3px 0px 7px rgba(27, 27, 26, 0.8), -3px 0px 7px rgba(5, 5, 5, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);
   margin: 0;
@@ -26,7 +29,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .logo h1:first-of-type {
+  .logo span:first-of-type {
     margin-top: 2rem;
   }
 }

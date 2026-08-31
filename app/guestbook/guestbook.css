@@ -1,0 +1,13 @@
+.guestbook-layout { display: grid; grid-template-columns: minmax(240px, .8fr) 1.2fr; gap: 2rem; align-items: start; }
+.guestbook-form { display: grid; gap: 1rem; padding: 1.25rem; background: rgba(255,255,255,.68); border: 1px solid #c7c7c7; }
+.guestbook-form label { display: grid; gap: .4rem; color: #171717; font: 700 .78rem/1.4 Courier, monospace; text-transform: uppercase; }
+.guestbook-form input, .guestbook-form textarea { width: 100%; padding: .8rem; border: 1px solid #aaa; border-radius: 0; background: #fff; color: #111; font: 400 .9rem/1.5 Courier, monospace; }
+.guestbook-form textarea { resize: vertical; }
+.guestbook-form button { padding: .85rem 1rem; border: 0; border-radius: 0; background: #a52929; color: #fff; font-weight: 700; text-transform: uppercase; }
+.guestbook-entries { display: grid; gap: 1rem; }
+.guestbook-entry { padding: 1rem; border-left: 3px solid #a52929; background: rgba(255,255,255,.76); }
+.guestbook-entry header { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .65rem; color: #171717; }
+.guestbook-entry time { color: #7c2929; font: 400 .72rem/1.4 Courier, monospace; }
+.guestbook-entry p { margin: 0; color: #222; font: 400 .86rem/1.65 Courier, monospace; overflow-wrap: anywhere; }
+.guestbook-empty { color: #333; font-family: Courier, monospace; }
+@media (max-width: 720px) { .guestbook-layout { grid-template-columns: 1fr; } .guestbook-entry header { flex-direction: column; gap: .2rem; } }

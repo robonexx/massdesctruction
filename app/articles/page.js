@@ -10,7 +10,7 @@ export default function ArticlesPage() {
     <ArchivePage 
       title="INTERVIEWS"
       eyebrow="Mass Destruction Archive"
-      background="/archive/bg_media.png"
+      background="media"
     >
       <p className="archive-lead">Röster ur funk- och streetdance-scenen, bevarade från originalwebbplatsen.</p>
       <div className="archive-grid">

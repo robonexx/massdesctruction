@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import desktopBackground from '../src/assets/images/bg_main.png';
+import mobileBackground from '../src/assets/images/bg_mobile.png';
 
 const defaultNewsItems = [
   {
@@ -41,6 +43,10 @@ export default function HomePage() {
 
   return (
     <main className="page-shell">
+      <picture>
+        <source media="(max-width: 767px)" srcSet={mobileBackground.src} />
+        <img className="home-background" src={desktopBackground.src} alt="" />
+      </picture>
       <section className="hero-block">
         <div className="hero-copy">
           <p className="eyebrow">Welcome</p>
