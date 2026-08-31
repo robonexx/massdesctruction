@@ -24,6 +24,7 @@ export default async function ArticleDetailPage({ params }) {
       title={article.name}
       eyebrow={`Interview · ${article.date}`}
       background="media"
+      compactTitle
     >
       <p className="archive-lead">{article.intro}</p>
       {article.type === 'video' ? (

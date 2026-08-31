@@ -190,7 +190,8 @@
 }
 
 .archive-heading--compact h1 {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.7rem, 2.5vw, 2.25rem);
+  line-height: 1;
 }
 
 @media (min-width: 768px) {
@@ -201,5 +202,6 @@
   .archive-page { left: 3%; width: 94%; padding-inline: 1.1rem; }
   .archive-heading { left: 3%; width: 94%; padding-inline: 1.1rem; }
   .archive-heading h1 { font-size: clamp(2.35rem, 12vw, 3rem); }
+  .archive-heading--compact h1 { font-size: clamp(1.35rem, 6.5vw, 1.85rem); }
   .archive-grid { grid-template-columns: 1fr; }
 }
