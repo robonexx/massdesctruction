@@ -25,7 +25,7 @@ export default function MdAdminPage() {
   const [guestbook, setGuestbook] = useState(() => readLocalJson('massdestruction_guestbook', []));
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [text, setText] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   useEffect(() => {
     const loadData = async () => {
@@ -71,6 +71,7 @@ export default function MdAdminPage() {
   const addNews = async (event) => {
     event.preventDefault();
     if (!text.trim()) return;
+    setStatus({ type: '', message: '' });
 
     const nextEntry = {
       date,
@@ -84,20 +85,19 @@ export default function MdAdminPage() {
         body: JSON.stringify(nextEntry),
       });
 
-      if (response.ok) {
-        const saved = await response.json();
-        setNews((current) => [saved, ...normalizeNews(current)]);
-        setText('');
-        setStatus('Nyhet publicerad på startsidan.');
-        return;
-      }
-    } catch (error) {
-      console.warn('News API save failed, saving locally instead.', error);
-    }
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || 'Nyheten kunde inte publiceras.');
 
-    setNews((current) => [nextEntry, ...normalizeNews(current)]);
-    setText('');
-    setStatus('Nyhet publicerad på startsidan.');
+      setNews((current) => [result, ...normalizeNews(current)]);
+      setText('');
+      setStatus({ type: 'success', message: 'Nyhet publicerad på startsidan.' });
+    } catch (error) {
+      console.warn('News API save failed.', error);
+      setStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Nyheten kunde inte publiceras.',
+      });
+    }
   };
 
   const removeGuestbook = async (id) => {
@@ -141,7 +141,7 @@ export default function MdAdminPage() {
               <textarea value={text} onChange={(event) => setText(event.target.value)} rows={4} style={{ padding: '0.8rem', background: '#000', border: '1px solid #666', color: '#fff', resize: 'vertical' }} />
             </label>
             <button type="submit" style={{ padding: '0.9rem 1.2rem', background: '#b61d1d', border: 'none', color: '#fff', fontWeight: 700, cursor: 'pointer' }}>Publicera nyhet</button>
-            {status && <p style={{ margin: 0, color: '#a5f3a5' }}>{status}</p>}
+            {status.message && <p role="status" style={{ margin: 0, color: status.type === 'error' ? '#ff9b9b' : '#a5f3a5' }}>{status.message}</p>}
           </form>
         </section>
 
