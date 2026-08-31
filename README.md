@@ -39,14 +39,38 @@ Rob One
 I hope this project is accepted as last minute change of heart.
 
 
-## Tech used
-- [react-js](https://beta.reactjs.org/)
-- [vite-js](https://vitejs.dev/)
-- [react-router-dom](https://reactrouter.com/en/main)
-- [sass](https://sass-lang.com/)
-- [framer-motion](https://www.framer.com/motion/)
-- [date-fns](https://date-fns.org/)
-- [use-interval](https://www.npmjs.com/package/use-interval)
+## Tech Stack (Rebuilt with Next.js)
+
+**Framework**: Next.js 16 with App Router  
+**Frontend**: React 19  
+**Styling**: Sass  
+**Database** (optional): MongoDB Atlas  
+**Hosting**: Vercel  
+**Additional**: Framer Motion for animations, date-fns for date formatting
+
+## Features
+
+✅ **Full-stack with built-in API routes** - No separate backend needed  
+✅ **Hidden admin panel** - Secure login at `/md-login`  
+✅ **News management** - Post updates to homepage  
+✅ **Guestbook moderation** - Manage visitor entries  
+✅ **Vercel-ready** - Deploy instantly with env variables  
+✅ **MongoDB optional** - Persistent storage or localStorage fallback  
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000)
+
+**Admin login**: `/md-login` → Username: `robone` / Password: `1234dans`
+
+## Deployment
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full Vercel setup instructions.
 
 
 ## __My Socials__
