@@ -1,80 +1,85 @@
-# Assignment 3 (Frameworks)
+# Mass Destruction Archive
 
-Implement a design from Dribble or a template or an existing website
-Try to make it as close to the original as possible 
+[massdestruction.se](https://massdestruction.se) är ett digitalt arkiv över den svenska popping- och lockinggruppen Mass Destruction. Projektet bevarar gruppens ursprungliga webbplats, filmer, bilder, musik och historia i en modern version som fortfarande ligger nära Sven Forshells originaldesign.
 
-- this page is underconstruction but has everything needed for the CME assignment
-I will remake this website, and also try to implement a comments section cause ours 
-diden work, but I will remove the newsletter link
+## Från 2004 till idag
 
-## My choice
+Den första webbplatsen skapades 2004 av Sven Forshell, även känd som Slam Tilt. Sven var en av personerna bakom Mass Destruction och formgav och byggde sidan i PHP. På den tiden låg webbplatsen lokalt på en dator som fungerade som server hemma hos Sven.
 
-Design from old crew website, a tribute to our dear member sven forshell who passed in 2016 
-He was the designer and developer for the original website of massdestruction (popping and locking group)
+När originalsajten senare försvann från webben fanns inte längre någon modern kodbas att fortsätta arbeta i. Jag letade därför upp bevarade versioner via [Wayback Machine](https://web.archive.org/web/20100523135817/http://www.massdestruction.se/) och använde dem som visuell och historisk referens.
 
-## IMAGE from waybackmachine for design
+Några år senare, när jag studerade webbutveckling, började jag återskapa sidan med React och Vite. Den versionen blev det första försöket att flytta designen från den gamla PHP-sajten till en modern frontend.
 
-<img src="./massdestruction.png" alt="project design image" width="150"> &nbsp; &nbsp;
+Nu har projektet byggts om igen, denna gång som en fullstack-applikation med Next.js. Målet har inte varit att ersätta originalet med en helt ny design, utan att bevara känslan, materialet och historien samtidigt som webbplatsen fungerar i dagens webbläsare och återigen ligger live på sin ursprungliga domän: [massdestruction.se](https://massdestruction.se).
 
-## The old website
-[Mass Desctruction . se](https://web.archive.org/web/20100523135817/http://www.massdestruction.se/)
+![Referensbild från den ursprungliga webbplatsen](./massdestruction.png)
 
-## Demo online
-Massdestruction Demo - [MD](https://massdestruction.vercel.app/)
+## Utmaningar i restaureringen
 
+Att flytta en webbplats från 2004 till dagens webb har inneburit flera typer av arbete:
 
+- Designen behövde rekonstrueras från ofullständiga ögonblicksbilder i Wayback Machine.
+- Den tidigare Vite-versionen behövde separeras från den nya Next.js-strukturen utan att viktiga resurser försvann.
+- Den gamla PHP-baserade lösningen ersattes med Next.js App Router och serverbaserade API-rutter.
+- Den fasta originaldesignen behövde anpassas för moderna skärmstorlekar, mobil navigation och scrollbara innehållsytor.
+- Nyheter och gästboksinlägg behövde få permanent lagring, administration och sessionsbaserad inloggning.
+- Gamla videoformat konverterades till MP4 för att fungera i moderna webbläsare.
 
-## Rebuilding of design from an old crew website
+Originalfilmerna och bilderna är historiskt källmaterial. Deras upplösning och bildkvalitet kan inte förbättras på riktigt utan att materialets ursprungliga karaktär förändras. De publiceras därför så nära originalskicket som möjligt.
 
-So I changed my mind (from previous choice Assignment 1), 
-I want to rebuild and old website. We had a popping crew back some 15-isch years ago 
-our friend SLAM TILT - Sven Forshell (R.I.P) created this site and did the designs back then. 
-He was also the person who put the group together. 
-Crew members of Massdescruction was 
-Slam Tilt,
-Prime,
-Quill,
-Rob One
+## Den moderna versionen
 
-I hope this project is accepted as last minute change of heart.
+Den nuvarande webbplatsen använder:
 
+- Next.js 16 med App Router
+- React 19
+- MongoDB Atlas för nyheter och gästbok
+- Server-side API routes för läsning, publicering och moderering
+- Signerade, HTTP-only cookies för adminsessionen
+- Framer Motion för mindre animationer
+- Vercel för hosting och deployment
 
-## Tech Stack (Rebuilt with Next.js)
+Webbplatsen innehåller bland annat:
 
-**Framework**: Next.js 16 with App Router  
-**Frontend**: React 19  
-**Styling**: Sass  
-**Database** (optional): MongoDB Atlas  
-**Hosting**: Vercel  
-**Additional**: Framer Motion for animations, date-fns for date formatting
+- Det historiska nyhetsarkivet från originalsajten
+- Nya nyheter publicerade via `/md-admin`
+- Gästbok med permanent MongoDB-lagring
+- Musik, arkivbilder och MP4-konverterade filmer
+- Medlemssidor och historiskt material om gruppen
 
-## Features
+## Lokal utveckling
 
-✅ **Full-stack with built-in API routes** - No separate backend needed  
-✅ **Hidden admin panel** - Secure login at `/md-login`  
-✅ **News management** - Post updates to homepage  
-✅ **Guestbook moderation** - Manage visitor entries  
-✅ **Vercel-ready** - Deploy instantly with env variables  
-✅ **MongoDB Atlas** - Persistent news and guestbook storage
-
-## Quick Start
+Installera beroenden och starta utvecklingsservern:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+Öppna [http://localhost:3000](http://localhost:3000).
 
-**Admin login**: `/md-login` using the server-side `MD_ADMIN_USER` and `MD_ADMIN_PASS` values
+Skapa en lokal `.env` med följande servervariabler:
+
+```env
+MD_ADMIN_USER=your-admin-user
+MD_ADMIN_PASS=your-admin-password
+MD_ADMIN_SESSION_SECRET=your-long-random-session-secret
+MONGODB_URI=your-mongodb-atlas-connection-string
+MONGODB_DB=massdestruction
+```
+
+Admininloggningen finns på `/md-login`. Hemliga värden ska aldrig använda prefixet `NEXT_PUBLIC_`.
 
 ## Deployment
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for full Vercel setup instructions.
+Projektet är kopplat till Vercel och använder MongoDB Atlas för den permanenta datan. Se [DEPLOYMENT.md](./DEPLOYMENT.md) för miljövariabler och deployinstruktioner.
 
+## Om projektet
 
-## __My Socials__
+Detta är ett personligt arkiv- och minnesprojekt tillägnat Sven Forshell och Mass Destruction: Slam Tilt, Prime, Quill och Rob One.
 
-- Github - [robonexx](https://github.com/xxrobone)
-- Linkedin - [Robert Wägar](https://www.linkedin.com/in/robert-w%C3%A4gar-1b4661139/)
-- Portfolio - [Portfolio](https://www.robertwagar.se) - will do a remake using react or next
+## Kontakt
+
+- [GitHub](https://github.com/xxrobone)
+- [LinkedIn](https://www.linkedin.com/in/robert-w%C3%A4gar-1b4661139/)
+- [Portfolio](https://www.robertwagar.se)
