@@ -11,19 +11,29 @@
 
 .archive-page {
   position: absolute;
-  z-index: 20;
+  z-index: 1;
   top: 20vh;
   left: 15%;
   width: min(50%, 820px);
   height: 70vh;
-  padding: 2rem clamp(1rem, 4vw, 3.5rem) 6rem;
+  padding: 8rem clamp(1rem, 4vw, 3.5rem) 6rem;
   overflow-y: auto;
   color: #171717;
   background: transparent;
   scrollbar-color: #a52929 transparent;
 }
 
-.archive-page h1 {
+.archive-heading {
+  position: absolute;
+  top: 20vh;
+  left: 15%;
+  z-index: 20;
+  width: min(50%, 820px);
+  padding: 2rem clamp(1rem, 4vw, 3.5rem) 0;
+  pointer-events: none;
+}
+
+.archive-heading h1 {
   color: #111;
   font-size: clamp(2.7rem, 6vw, 5.5rem);
   margin: 0.5rem 0 1.5rem 0;
@@ -36,7 +46,7 @@
   color: #171717;
 }
 
-.archive-eyebrow {
+.archive-heading .archive-eyebrow {
   color: #a52929;
   font-weight: 700;
   font-size: 0.72rem;
@@ -166,6 +176,13 @@
     background: rgba(237, 237, 237, 0.9);
   }
 
+  .archive-heading {
+    top: 12vh;
+    left: 4%;
+    width: 92%;
+    padding-top: 2rem;
+  }
+
   .link-list a {
     flex-direction: column;
   }
@@ -177,6 +194,7 @@
 
 @media (max-width: 520px) {
   .archive-page { left: 3%; width: 94%; padding-inline: 1.1rem; }
-  .archive-page h1 { font-size: clamp(2.35rem, 14vw, 4rem); }
+  .archive-heading { left: 3%; width: 94%; padding-inline: 1.1rem; }
+  .archive-heading h1 { font-size: clamp(2.35rem, 14vw, 4rem); }
   .archive-grid { grid-template-columns: 1fr; }
 }

@@ -26,9 +26,11 @@ export default function ArchivePage({
         <source media="(max-width: 767px)" srcSet={mobileBackground.src} />
         <img src={(backgrounds[background] || mediaBackground).src} alt="" className="bg_main" />
       </picture>
-      <main className="archive-page">
+      <header className="archive-heading">
         <p className="archive-eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
+      </header>
+      <main className="archive-page">
         {children}
       </main>
     </>
