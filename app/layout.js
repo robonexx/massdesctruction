@@ -1,4 +1,5 @@
 import './globals.css';
+import LayoutClient from './LayoutClient';
 
 export const metadata = {
   title: 'Mass Destruction',
@@ -8,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="sv">
-      <body>{children}</body>
+      <body>
+        <LayoutClient>{children}</LayoutClient>
+      </body>
     </html>
   );
 }
