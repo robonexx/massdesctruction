@@ -19,20 +19,17 @@ export default function MdLoginPage() {
         body: JSON.stringify({ username, password }),
       });
 
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-
       const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Login failed');
       if (result.ok) {
         router.push('/md-admin');
         return;
       }
-    } catch {
-      // The server is the only authority for admin credentials.
+    } catch (loginError) {
+      setError(loginError instanceof Error && loginError.message === 'Admin login is not configured'
+        ? 'Admin-inloggningen saknar miljövariabler.'
+        : 'Fel användarnamn eller lösenord.');
     }
-
-    setError('Fel användarnamn eller lösenord.');
   };
 
   return (
