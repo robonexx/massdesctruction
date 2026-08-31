@@ -1,27 +1,53 @@
 import { MongoClient } from 'mongodb';
 
-const uri = process.env.MONGODB_URI;
-const hasUsableUri = Boolean(uri && !/[<>]|xxxxx|username|password/i.test(uri));
-let clientPromise = null;
+const globalMongo = globalThis;
+
+export class MongoConfigurationError extends Error {
+  constructor() {
+    super('MongoDB is not configured. Set MONGODB_URI in .env.local or .env.');
+    this.name = 'MongoConfigurationError';
+  }
+}
+
+function getMongoUri() {
+  const uri = process.env.MONGODB_URI?.trim();
+  if (!uri || /[<>]|xxxxx|username|password/i.test(uri)) throw new MongoConfigurationError();
+  return uri;
+}
 
 export function isMongoConfigured() {
-  return hasUsableUri;
+  try {
+    getMongoUri();
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export async function getDatabase() {
-  if (!hasUsableUri) return null;
+  const uri = getMongoUri();
 
-  if (!clientPromise) {
+  if (!globalMongo.__massDestructionMongoPromise || globalMongo.__massDestructionMongoUri !== uri) {
     const client = new MongoClient(uri, {
-      serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      maxPoolSize: 10,
     });
-    clientPromise = client.connect().catch((error) => {
-      clientPromise = null;
+    globalMongo.__massDestructionMongoUri = uri;
+    globalMongo.__massDestructionMongoPromise = client.connect().catch((error) => {
+      globalMongo.__massDestructionMongoPromise = null;
       throw error;
     });
   }
 
-  const client = await clientPromise;
+  const client = await globalMongo.__massDestructionMongoPromise;
   return client.db(process.env.MONGODB_DB || 'massdestruction');
+}
+
+export async function getNewsCollection() {
+  return (await getDatabase()).collection('news');
+}
+
+export async function getGuestbookCollection() {
+  return (await getDatabase()).collection('guestbook');
 }
