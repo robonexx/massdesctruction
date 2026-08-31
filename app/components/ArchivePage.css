@@ -64,13 +64,14 @@
   display: block;
   padding: 1.15rem;
   border: 1px solid #c7c7c7;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(237, 237, 237, 0.36);
   text-decoration: none;
   transition: 0.2s ease;
 }
 
 .archive-card:hover {
   border-color: #a52929;
+  background: rgba(237, 237, 237, 0.72);
   transform: translateY(-2px);
 }
 
@@ -100,7 +101,7 @@
   max-width: 66ch;
   padding: 1.5rem;
   border-left: 3px solid #a52929;
-  background: #fff;
+  background: transparent;
   font-size: 0.9rem;
   line-height: 1.65;
   font-family: Courier, monospace;
@@ -146,7 +147,7 @@
 }
 
 .link-list a:hover {
-  background: #fff;
+  background: rgba(237, 237, 237, 0.68);
   color: #a52929;
 }
 

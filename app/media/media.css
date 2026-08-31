@@ -2,13 +2,13 @@
 .media-tabs button { padding: .6rem 1rem; border: 0; border-radius: 0; color: #333; background: transparent; font: 700 .78rem Courier,monospace; text-transform: uppercase; }
 .media-tabs button.active { color: #fff; background: #a52929; }
 .track-list { display: grid; gap: .55rem; }
-.track-list article { display: grid; grid-template-columns: minmax(150px,1fr) minmax(220px,1.6fr); align-items: center; gap: 1rem; padding: .7rem; background: rgba(255,255,255,.7); }
+.track-list article { display: grid; grid-template-columns: minmax(150px,1fr) minmax(220px,1.6fr); align-items: center; gap: 1rem; padding: .7rem; background: rgba(237,237,237,.3); border-bottom: 1px solid rgba(165,41,41,.35); }
 .track-list article div { margin: 0; }
 .track-list strong,.track-list small { display: block; color: #171717; font-family: Courier,monospace; }
 .track-list small { color: #8f2828; }
 .track-list audio { width: 100%; height: 34px; }
 .video-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 1rem; }
-.video-grid article { overflow: hidden; border-top: 5px solid #171717; background: #fff; }
+.video-grid article { overflow: hidden; border-top: 5px solid #171717; background: rgba(237,237,237,.34); }
 .video-grid video { display: block; width: 100%; aspect-ratio: 4/3; background: #111; }
 .video-info { padding: .8rem; }
 .video-info h2 { margin: 0 0 .25rem; color: #171717; font-size: 1.4rem; }
