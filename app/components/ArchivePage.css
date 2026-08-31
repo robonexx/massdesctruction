@@ -35,9 +35,10 @@
 
 .archive-heading h1 {
   color: #111;
-  font-size: clamp(2.7rem, 6vw, 5.5rem);
+  font-size: 3rem;
   margin: 0.5rem 0 1.5rem 0;
   font-family: var(--display-font);
+  transform: translateY(-16px);
   text-align: center;
 }
 
@@ -189,7 +190,7 @@
 }
 
 .archive-heading--compact h1 {
-  font-size: clamp(2rem, 3.5vw, 3.75rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
 }
 
 @media (min-width: 768px) {
@@ -199,6 +200,6 @@
 @media (max-width: 520px) {
   .archive-page { left: 3%; width: 94%; padding-inline: 1.1rem; }
   .archive-heading { left: 3%; width: 94%; padding-inline: 1.1rem; }
-  .archive-heading h1 { font-size: clamp(2.35rem, 14vw, 4rem); }
+  .archive-heading h1 { font-size: clamp(2.35rem, 12vw, 3rem); }
   .archive-grid { grid-template-columns: 1fr; }
 }
