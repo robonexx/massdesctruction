@@ -7,6 +7,10 @@ export const musicTracks = [
 ]
 
 export const videoClips = [
+  ['md-yared-01.mp4', 'Razzle Dazzle (Yared).01', "Razzle Dazzle playing with Prime's music"],
+  ['md-bbot-01.mp4', 'Baby Bang & Ooooh Tiffany (BBOT)', "Clip from France featuring Baby Bang and Ooooh Tiffany with Prime's music"],
+  ['md-greg.mp4', 'Greg Campbellock Jr. Interview', 'Interview clip with Greg Campbellock Jr.'],
+  ['md-joakim-01.mp4', 'Joakim.01', 'Feature clip with Joakim from Copenhagen'],
   ['md-chuco.mp4', 'Chuco', 'Feature clip of Chuco, representing Universoul BBoyz'],
   ['md-f4b-01.mp4', 'Funky Four Brothers.01', 'A-Train and Skills qualifying at Juste Debout 2006'],
   ['md-unknown.mp4', 'Unknown?', 'Old artifact...'],
@@ -40,11 +44,24 @@ export const pictureFiles = Array.from({ length: 53 }, (_, index) => index + 1)
   .filter((number) => ![36, 40].includes(number))
   .map((number) => `smallpic${String(number).padStart(3, '0')}.jpg`)
 
-export const interviews = [
-  { slug: 'chuco', name: 'Chuco', date: '2006', intro: 'Universoul popper Chuco om foundation, crews, boogaloo och att bygga en egen stil.', topics: ['Where it started', 'Foundation before style', 'Crew culture', 'Advice for new dancers'] },
-  { slug: 'joakim', name: 'Joakim', date: '2006-12-05', intro: 'Den danske funkstylern Joakim om den skandinaviska scenen, battles och gemenskap.', topics: ['Copenhagen', 'The Scandinavian approach', 'Memorable battles', 'Why crews matter'] },
-  { slug: 'sean', name: 'Sean', date: '2005-04', intro: 'Bjørn "Sean" Hagen om popping, graffiti, musik och den norska streetdance-scenen.', topics: ['Norway and El Tempo', 'Mixing styles', 'Teaching', 'Building foundation'] },
-  { slug: 'shallow', name: 'Shallow', date: '2006-04', intro: 'Shallow berättar om sin start 1978 och eventet Unity & Respect i Boston.', topics: ['Dancing since 1978', 'Hip-hop community', 'Unity & Respect', 'Music without boundaries'] },
+export const clipTrackList = [
+  { clip: 'MD.01', title: 'The Teaser Clip', tracks: ['Chocolate Milk — Take It Off'] },
+  { clip: 'MD.02', title: 'Popping Zombies', tracks: ['Tuff Crew — Techno Tuff'] },
+  { clip: 'MD.03', title: 'Locking in Quills Mansion', tracks: ['James Brown — Rapp Payback'] },
+  {
+    clip: 'MD.04',
+    title: 'Popping in Quills Mansion',
+    tracks: [
+      'Chocolate Milk — Running On Empty',
+      'Prince — Head',
+      'Roger Troutman — Thrillseekers',
+    ],
+  },
+  { clip: 'Quill.01', title: 'Royal Theatre of Örebro', tracks: ['The Rolling Stones — Paint It Black'] },
+  { clip: 'Quill.02', title: 'Backyard Summertime', tracks: ['D-Train — Keep Giving Me Love'] },
+  { clip: 'Sven.01', title: 'Graffiti Wall in Paris', tracks: ['Kadenza — Love You Madly'] },
+  { clip: 'Sven.03', title: 'Eiffel Tower, Paris', tracks: ["Ebonnee Webb — Keep On Steppin'"] },
+  { clip: 'Prime.03', title: 'Freestyle Locking', tracks: ['Afterback — Wanna Fill You Up'] },
 ]
 
 export const archiveLinks = [

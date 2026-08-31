@@ -1,26 +1,23 @@
-'use client';
-
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import ArchivePage from '../../components/ArchivePage';
-import { interviews } from '../../lib/archive';
+import { getInterview, interviews } from '../../lib/interviews';
+import '../articles.css';
 
-export default function ArticleDetailPage() {
-  const params = useParams();
-  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
-  
-  const article = interviews.find((item) => item.slug === slug);
-  
-  if (!article) {
-    return (
-      <ArchivePage 
-        title="Intervjun hittades inte"
-        background="media"
-      >
-        <Link href="/articles" className="back-link">Till alla intervjuer</Link>
-      </ArchivePage>
-    );
-  }
+export function generateStaticParams() {
+  return interviews.map((interview) => ({ slug: interview.slug }));
+}
+
+export async function generateMetadata({ params }) {
+  const article = getInterview((await params).slug);
+  return article
+    ? { title: `${article.name} interview | Mass Destruction` }
+    : { title: 'Interview | Mass Destruction' };
+}
+
+export default async function ArticleDetailPage({ params }) {
+  const article = getInterview((await params).slug);
+  if (!article) notFound();
 
   return (
     <ArchivePage 
@@ -29,16 +26,30 @@ export default function ArticleDetailPage() {
       background="media"
     >
       <p className="archive-lead">{article.intro}</p>
-      <section className="article-body">
-        <h2>Ur originalarkivet</h2>
-        <p>Den här intervjun är återfunnen i den arkiverade versionen av massdestruction.se. Originalets teman och sammanhang är bevarade här medan hela textmaterialet restaureras.</p>
-        <ul>
-          {article.topics.map((topic) => (
-            <li key={topic}>{topic}</li>
+      {article.status === 'coming-soon' ? (
+        <section className="article-body interview-coming-soon">
+          <h2>Interview coming soon</h2>
+          <p>Intervjun är identifierad i arkivet men hela texten har ännu inte återfunnits. Sidan fylls på när transkriberingen är klar.</p>
+        </section>
+      ) : (
+        <article className="article-body interview-transcript">
+          <p className="transcript-note">Transkriberad från den arkiverade originalwebbplatsen. Språk och tidsprägel har bevarats.</p>
+          {article.questions.map((entry, index) => (
+            <section className="interview-exchange" key={`${article.slug}-${index}`}>
+              <p className="interview-label">Question {index + 1}</p>
+              <h2>{entry.question}</h2>
+              {entry.context && <p className="question-context">({entry.context})</p>}
+              <p className="interview-label interview-label--answer">Answer</p>
+              {entry.list && (
+                <ul className="answer-list">
+                  {entry.list.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              )}
+              {entry.answer.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </section>
           ))}
-        </ul>
-        <p className="archive-note">Fullständig transkribering från originalets HTML är nästa restaureringssteg.</p>
-      </section>
+        </article>
+      )}
       <Link href="/articles" className="back-link">← Alla intervjuer</Link>
     </ArchivePage>
   );

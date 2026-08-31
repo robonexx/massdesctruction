@@ -1,1 +1,113 @@
-/* Articles page styling inherited from ArchivePage.css */
+.interview-card--upcoming {
+  border-style: dashed;
+}
+
+.clip-soundtrack {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 3px solid #a52929;
+  font-family: Courier, monospace;
+}
+
+.clip-soundtrack > h2 {
+  margin: 0.25rem 0 0.65rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--display-font);
+}
+
+.clip-soundtrack > p:not(.clip-soundtrack__eyebrow) {
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+}
+
+.clip-soundtrack__eyebrow,
+.interview-label {
+  margin: 0;
+  color: #a52929;
+  font: 700 0.7rem/1.4 Courier, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.clip-track-table {
+  border-top: 1px solid rgba(23, 23, 23, 0.35);
+}
+
+.clip-track-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.8fr) minmax(220px, 1.4fr);
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.28);
+}
+
+.clip-track-row strong,
+.clip-track-row span {
+  display: block;
+}
+
+.clip-track-row strong {
+  color: #a52929;
+}
+
+.clip-track-row ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.interview-transcript {
+  max-width: 72ch;
+  padding: 0 0 1rem 1.5rem;
+}
+
+.transcript-note {
+  margin-bottom: 2rem;
+  color: #6d2424;
+  font-size: 0.78rem;
+}
+
+.interview-exchange + .interview-exchange {
+  margin-top: 2.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(23, 23, 23, 0.3);
+}
+
+.interview-exchange h2 {
+  margin: 0.35rem 0 0.45rem;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.25;
+}
+
+.question-context {
+  margin-bottom: 1.2rem;
+  color: #555;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.interview-label--answer {
+  margin-top: 1.3rem;
+}
+
+.interview-exchange > p:not(.interview-label, .question-context) {
+  margin-top: 0.85rem;
+}
+
+.answer-list {
+  margin: 0.85rem 0 1rem 1.2rem !important;
+}
+
+.interview-coming-soon h2 {
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 620px) {
+  .clip-track-row {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .interview-transcript {
+    padding-left: 1rem;
+  }
+}
