@@ -1,13 +1,5 @@
 export const interviews = [
   {
-    slug: 'greg-campbellock-jr',
-    name: 'Greg Campbellock Jr.',
-    date: 'Coming soon',
-    status: 'coming-soon',
-    intro: 'En kommande intervju med Greg Campbellock Jr. Textmaterialet läggs till när det har återfunnits och transkriberats.',
-    questions: [],
-  },
-  {
     slug: 'joakim',
     name: 'Joakim',
     date: '2006-12-05',

@@ -17,12 +17,12 @@ export default function ArticlesPage() {
           <Link
             href={`/articles/${article.slug}`}
             key={article.slug}
-            className={`archive-card${article.status === 'coming-soon' ? ' interview-card--upcoming' : ''}`}
+            className="archive-card"
           >
             <span>{article.date}</span>
             <h2>{article.name}</h2>
             <p>{article.intro}</p>
-            <strong>{article.status === 'coming-soon' ? 'Förhandsvisning →' : 'Läs intervjun →'}</strong>
+            <strong>Läs intervjun →</strong>
           </Link>
         ))}
       </div>

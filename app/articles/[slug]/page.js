@@ -26,30 +26,23 @@ export default async function ArticleDetailPage({ params }) {
       background="media"
     >
       <p className="archive-lead">{article.intro}</p>
-      {article.status === 'coming-soon' ? (
-        <section className="article-body interview-coming-soon">
-          <h2>Interview coming soon</h2>
-          <p>Intervjun är identifierad i arkivet men hela texten har ännu inte återfunnits. Sidan fylls på när transkriberingen är klar.</p>
-        </section>
-      ) : (
-        <article className="article-body interview-transcript">
-          <p className="transcript-note">Transkriberad från den arkiverade originalwebbplatsen. Språk och tidsprägel har bevarats.</p>
-          {article.questions.map((entry, index) => (
-            <section className="interview-exchange" key={`${article.slug}-${index}`}>
-              <p className="interview-label">Question {index + 1}</p>
-              <h2>{entry.question}</h2>
-              {entry.context && <p className="question-context">({entry.context})</p>}
-              <p className="interview-label interview-label--answer">Answer</p>
-              {entry.list && (
-                <ul className="answer-list">
-                  {entry.list.map((item) => <li key={item}>{item}</li>)}
-                </ul>
-              )}
-              {entry.answer.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </section>
-          ))}
-        </article>
-      )}
+      <article className="article-body interview-transcript">
+        <p className="transcript-note">Transkriberad från den arkiverade originalwebbplatsen. Språk och tidsprägel har bevarats.</p>
+        {article.questions.map((entry, index) => (
+          <section className="interview-exchange" key={`${article.slug}-${index}`}>
+            <p className="interview-label">Question {index + 1}</p>
+            <h2>{entry.question}</h2>
+            {entry.context && <p className="question-context">({entry.context})</p>}
+            <p className="interview-label interview-label--answer">Answer</p>
+            {entry.list && (
+              <ul className="answer-list">
+                {entry.list.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            )}
+            {entry.answer.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </section>
+        ))}
+      </article>
       <Link href="/articles" className="back-link">← Alla intervjuer</Link>
     </ArchivePage>
   );
