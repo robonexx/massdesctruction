@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin: 0;
+  padding: 0;
 }
 
 .nav .menu .nav_item {
@@ -32,6 +34,7 @@
   letter-spacing: 2px;
   cursor: pointer;
   display: inline-block;
+  font-family: var(--display-font);
 }
 
 .nav .menu .nav_item .nav_link:hover {

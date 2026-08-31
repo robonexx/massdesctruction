@@ -18,13 +18,14 @@ export default function LayoutClient({ children }) {
   };
 
   return (
-    <>
+    <div className="App">
       {!isAdminRoute && <Header />}
       {!isAdminRoute && <Navigation />}
       {!isAdminRoute && <Hamburger active={mobileMenuOpen} setActive={setMobileMenuOpen} />}
       {!isAdminRoute && <MobileNav active={mobileMenuOpen} onNavigate={handleNavClick} />}
+      {!isAdminRoute && <div className="bg_white" />}
       {!isAdminRoute && <AmbientFrame />}
       {children}
-    </>
+    </div>
   );
 }

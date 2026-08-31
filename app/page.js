@@ -49,8 +49,8 @@ export default function HomePage() {
       </picture>
       <section className="hero-block">
         <div className="hero-copy">
-          <p className="eyebrow">Welcome</p>
-          <h1>Mass Destruction</h1>
+          <h1>Welcome</h1>
+          <h4>Join force with three generations of funkateers!</h4>
           <p>
             Join force with three generations of funkateers. Patrik ‘Prime’ Helge and Tomas ‘Quill’
             Strandgren represent the first generation, while Robert ‘RobOne’ Wägar continues the
@@ -59,7 +59,7 @@ export default function HomePage() {
         </div>
 
         <aside className="news-panel">
-          <p className="eyebrow red">News</p>
+          <h2 className="news-title">News</h2>
           <div className="news-list">
             {newsItems.map((item, index) => (
               <article key={`${item.date}-${index}`} className="news-item">
