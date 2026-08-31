@@ -1,0 +1,48 @@
+
+.moonphase {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+      display: block;
+      -webkit-user-select: none;
+      width: 200px;
+      background-color: transparent;
+      transition: background-color 300ms;
+  }
+  
+  
+  .moonphase > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  
+  .container {
+    position: absolute;
+    top: 220px;
+    left: 0;
+    width: 100%;
+    display: flex;
+  }
+  
+  .moonpath {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  
+  .moon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    background: rgb(230, 230, 230);
+    top: 0;
+    left: 0;
+    offset-path: path(
+      "M-8.00007 158.5C-8.00007 158.5 438.312 2.68291 720 1.5C1017.31 0.25147 1437.5 158.5 1437.5 158.5"
+    );
+  }
